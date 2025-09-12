@@ -19,23 +19,35 @@ def save(books):
 def add_book(books):
     title = ""
     author = ""
+    isbn = ""
     while not title:
         title = input("กรุณาใส่ชื่อหนังสือ : ").strip()
         if not title:
             print("ไม่มีชื่อหนังสือ กรุณาใส่ชื่อหนังสือ")
-
 
     while not author:
         author = input("กรุณาใส่ชื่อผู้เขียน : ").strip()
         if not author:
             print("ไม่มีชื่อหนังสือ กรุณาใส่ชื่อผู้เขียน")
 
+    while len(isbn) != 13:
+        isbn = input("กรุณาใส่เลขมาตรฐานสากลประจำหนังสือ : ").strip()
+        if not isbn:
+            print("ไม่มีเลขมาตรฐานสากลประจำหนังสือ กรุณาใส่ข้อมูล")
+        elif not isbn.isdigit():
+            print("ISBN ต้องเป็นตัวเลขเท่านั้น")
+        else:
+            print("ISBN ต้องมี 13 หลัก")
+
     for book in books:
         if book['title'] == title and book['author'] == author:
             print("\n!!หนังสือเล่มนี้มีอยู่แล้วในระบบ!!\n")
             return
+        elif book['isbn'] == isbn:
+            print("\n!!หนังสือเล่มนี้มีอยู่แล้วในระบบ!!\n")
+            return
 
-    books.append({"title" : title, "author" : author})
+    books.append({"title" : title, "author" : author, "isbn" : isbn})
     save(books)
     print(f"\n!!เพิ่มหนังสือเสร็จสิ้น ({title})!!\n")
 
