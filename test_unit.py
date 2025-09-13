@@ -1,4 +1,3 @@
-%%writefile test_book_manager.py
 import json
 import os
 import builtins
