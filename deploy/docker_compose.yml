@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ../backend
+    container_name: book-api
+    environment:
+      - DATA_PATH=/data/books.json
+      - CORS_ALLOW_ORIGINS=http://localhost:5173
+    ports:
+      - "8000:8000"
+    volumes:
+      - booksdata:/data
+  web:
+    build:
+      context: ../web
+    container_name: book-web
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+volumes:
+  booksdata:
