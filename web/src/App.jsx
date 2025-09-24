@@ -82,11 +82,14 @@ export default function App() {
         </div>
         <div>
           <BookForm
-            key={formKey} // ผูก key เพื่อให้ re-mount แล้วเคลียร์ฟอร์ม
-            initial={editing}
-            onSubmit={editing ? handleUpdate : handleAdd}
-            onCancel={() => setEditing(null)}
-          />
+			  key={formKey}
+			  initial={editing}
+			  onSubmit={editing ? handleUpdate : handleAdd}
+			  onCancel={() => {
+				setEditing(null)
+				setFormKey(k => k + 1)
+			  }}
+			/>
         </div>
       </div>
     </div>
