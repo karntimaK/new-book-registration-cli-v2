@@ -44,7 +44,12 @@ export default function BookForm({ initial, onSubmit, onCancel }) {
       <div>
         <button type="submit" style={{ padding: '6px 12px' }}>{initial ? 'บันทึก' : 'เพิ่ม'}</button>
         {onCancel && <button type="button" onClick={onCancel} style={{ padding: '6px 12px', marginLeft: 8 }}>ยกเลิก</button>}
-      </div>
+      </div><br />
+      <details>
+      <summary>ผู้จัดทำ</summary>
+        <p>นายณัฐพัฒน์ แสนตรี 663380012-6</p>
+        <p>นางสาวการติมา คำภีร์ 663380199-4</p>
+      </details>
     </form>
   )
 }
